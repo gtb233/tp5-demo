@@ -19,9 +19,9 @@ return [
     // 添加路由规则 路由到 index控制器的hello操作方法
 //    'hello/[:name]' => 'index/index/hello',
 //    'hello/[:name]$' => 'index/index/hello', // 完整匹配，路由必须一样时
-    'closure/[:name]' => function ($name) {
-        return $name;
-    },
+//    'closure/[:name]' => function ($name) {
+//        return $name;
+//    },
 
     // 定义路由的请求类型和后缀
 //    'test/[:name]' => ['index/hello', ['method' => 'get', 'ext' => 'html']],

@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 
+use app\common\model\User;
 use think\Controller;
 use think\Db;
 use think\Request;
@@ -80,4 +81,5 @@ class Index extends Controller
 
         return '';
     }
+
 }
