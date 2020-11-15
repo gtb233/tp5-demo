@@ -36,20 +36,46 @@ class User extends Model
         'debug'       => true,
     ];*/
 
-    // birthday读取器. 读取器命名规范：get + 属性名的驼峰命名+ Attr
-    protected function getBirthdayAttr($birthday)
-    {
-        return date('Y-m-d H:i:s', $birthday);
-    }
+    // 验证规则
+    protected $rule = [
+        'nickname' => 'require|min:5|token',
+        'email'    => 'require|email',
+        'birthday' => 'dateFormat:Y-m-d',
+    ];
 
-    /**
-     * 定义不存在的属性，与原始分开处理不同需求返回
-     * @param $value
-     * @param array $data  表示传入所有的属性数据
-     * @return false|string
-     */
-    protected function getUserBirthdayAttr($value,$data)
-    {
-        return date('Y-m-d', $data['birthday']);
-    }
+    // 定义时间戳字段名, 开启自动更新时间戳时
+//    protected $createTime = 'create_at';
+//    protected $updateTime = 'update_at';
+
+    protected $dateFormat = 'Y/m/d'; // 等同于 读取器
+    protected $type       = [ //等同于  修改器
+        // 设置birthday为时间戳类型（整型）
+        'birthday' => 'timestamp',
+    ];
+
+    // 自动写入时间戳
+    protected $autoWriteTimestamp = false;
+
+//    // birthday读取器. 读取器命名规范：get + 属性名的驼峰命名+ Attr
+//    protected function getBirthdayAttr($birthday)
+//    {
+//        return date('Y-m-d H:i:s', $birthday);
+//    }
+//
+//    /**
+//     * 定义不存在的属性，与原始分开处理不同需求返回
+//     * @param $value
+//     * @param array $data  表示传入所有的属性数据
+//     * @return false|string
+//     */
+//    protected function getUserBirthdayAttr($value,$data)
+//    {
+//        return date('Y-m-d', $data['birthday']);
+//    }
+//
+//    // birthday修改器, set + 属性名的驼峰命名+ Attr
+//    protected function setBirthdayAttr($value)
+//    {
+//        return strtotime($value);
+//    }
 }

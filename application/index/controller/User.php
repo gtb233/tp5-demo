@@ -35,7 +35,7 @@ class User
         // $user->isUpdate()->save();
 */
 
-        $user['nickname'] = '看云';
+        $user['nickname'] = '看云5';
         $user['email']    = 'kancloud@qq.com';
         $user['birthday'] = strtotime('2015-04-02');
         if ($result = UserModel::create($user)) {
@@ -83,7 +83,7 @@ class User
         echo $user['nickname'] . '<br/>'; // 系统为模型实现了ArrayAccess接口
         echo $user['email'] . '<br/>';
         echo $user->birthday . '<br/>';
-        echo $user->user_birthday  . '<br/>';
+//        echo $user->user_birthday  . '<br/>';
     }
 
     // 删除用户数据
