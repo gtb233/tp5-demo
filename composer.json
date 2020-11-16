@@ -16,8 +16,19 @@
         }
     ],
     "require": {
-        "php": ">=5.6.0",
-        "topthink/framework": "5.1.*",
+        "php": ">=5.4.0",
+        "topthink/framework": "5.0.*",
+        "topthink/think-captcha": "1.*",
+        "topthink/think-image": "^1.0",
+        "topthink/think-helper": "1.*",
+        "sonata-project/google-authenticator": "^2.0",
+        "evozi/apk-parser-php": "dev-master",
+        "aliyuncs/oss-sdk-php": "^2.3",
+        "rodneyrehm/plist": "^2.0",
+        "alibabacloud/client": "^1.5",
+        "topthink/think-worker": "1.*",
+        "topthink/think-queue": "1.*",
+        "topthink/think-migration": "1.*",
         "phpmailer/phpmailer": "^6.1"
     },
     "autoload": {
