@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>开始使用layui</title>
+    <link rel="stylesheet" href="/static/js/layui/css/layui.css">
+</head>
+<body>
+
+<!-- 你的HTML代码 -->
+<form class="layui-form" action="">
+    <div class="layui-form-item">
+        <div class="layui-inline">
+            <label class="layui-form-label">搜索选择框</label>
+            <div class="layui-input-inline">
+                <select name="modules" class="form-control" id="txtTGArea" lay-filter="txtTGArea" lay-search>
+
+                </select>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+<script src="/static/js/layui/layui.js"></script>
+<script>
+    //一般直接写在一个js文件中
+    layui.use(['layer', 'form', 'jquery'], function(){
+        var layer = layui.layer
+            ,form = layui.form;
+        var $ = layui.$;
+
+        setTimeout(function () {
+            layuiCreateSelect("txtTGArea");
+        }, 2000);
+
+
+        function layuiCreateSelect(selectId, url, value) {
+            $.ajax({
+                type: "POST",
+                url: "getJsonData",
+                data: "",
+                success: function(msg){
+                    console.log(msg);
+                    var data = msg.data;
+
+                    if (selectId.indexOf('#') != 0) {
+                        selectId = '#' + selectId;
+                    }
+
+                    $(selectId).empty(); // 清空该元素
+                    $(selectId).append("<option value=''>请选择...</option>");
+
+                    for (var k in data) {
+                        $(selectId).append("<option value='" + k + "'>" + data[k] +"</option>");
+                    }
+                    console.log(selectId);
+                    form.render('select');
+                }
+            });
+
+        }
+    });
+</script>
+</body>
+</html>

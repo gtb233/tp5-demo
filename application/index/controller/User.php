@@ -2,8 +2,9 @@
 namespace app\index\controller;
 
 use app\common\model\User as userModel;
+use think\Controller;
 
-class User
+class User extends Controller
 {
     public function index()
     {
@@ -103,5 +104,20 @@ class User
         } else {
             return '删除的用户不存在';
         }
+    }
+
+    public function view()
+    {
+        return $this->fetch();
+    }
+
+    public function getJsonData()
+    {
+        return json([
+            'data' => [
+                1 => 'user1',
+                2 => 'user2'
+            ]
+        ]);
     }
 }
