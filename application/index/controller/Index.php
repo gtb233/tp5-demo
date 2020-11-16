@@ -1,6 +1,7 @@
 <?php
 namespace app\index\controller;
 
+use app\common\helper\Mail;
 use app\common\model\User;
 use think\Controller;
 use think\Db;
@@ -82,4 +83,20 @@ class Index extends Controller
         return '';
     }
 
+    public function sendMail()
+    {
+        $toemail='874129460@qq.com';
+        $name='gt233';
+        $subject='QQ邮件发送测试。这里是邮件标题';
+
+        $content= '<h1>这里是邮件内容</h1> 恭喜你，邮件测试成功。';
+
+        $mail = new Mail();
+        $res = $mail->sendMail($toemail, $name, $subject, $content);
+        if ($res === true) {
+            return '发送成功！';
+        } else {
+            return '发送失败！'.$res;
+        }
+    }
 }
