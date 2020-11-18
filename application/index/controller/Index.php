@@ -99,4 +99,10 @@ class Index extends Controller
             return '发送失败！'.$res;
         }
     }
+
+    public function db()
+    {
+        $list = Db::table('data')->select();
+        dump($list);
+    }
 }

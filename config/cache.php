@@ -12,14 +12,32 @@
 // +----------------------------------------------------------------------
 // | 缓存设置
 // +----------------------------------------------------------------------
+use think\Env;
+return Env::get('cache.type', 'file') == 'redis' ?
+    // reids 缓存
+    [
+        // 驱动方式
+        'type'     => 'redis',
+        // 缓存保存目录
+        'path'     => CACHE_PATH,
+        // 缓存前缀
+        'prefix'   => 'abc',
+        // 缓存有效期 0表示永久缓存
+        'expire'   => 0,
 
-return [
-    // 驱动方式
-    'type'   => 'File',
-    // 缓存保存目录
-    'path'   => '',
-    // 缓存前缀
-    'prefix' => '',
-    // 缓存有效期 0表示永久缓存
-    'expire' => 0,
-];
+        'port'     => Env::get('redis.port', 6379),
+        'password' => Env::get('redis.password', '123456'),
+        'select'   => Env::get('cache.select', 0),
+        'host'     => Env::get('redis.host', '127.0.0.1'),
+    ] :
+    // 文件缓存 (本地使用这个)
+    [
+        // 驱动方式
+        'type'   => 'File',
+        // 缓存保存目录
+        'path'   => CACHE_PATH,
+        // 缓存前缀
+        'prefix' => '',
+        // 缓存有效期 0表示永久缓存
+        'expire' => 0,
+    ];
