@@ -7,7 +7,7 @@ namespace app\common\helper;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-use think\facade\Env;
+use think\Env;
 
 class Mail
 {

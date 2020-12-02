@@ -3,6 +3,7 @@ namespace app\index\controller;
 
 use app\common\model\User as userModel;
 use think\Controller;
+use think\Env;
 
 class User extends Controller
 {
